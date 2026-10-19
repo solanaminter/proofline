@@ -1,0 +1,1 @@
+{"devDependencies":{"typescript":"^5.0.0","vitest":"^3.0.0"},"name":"demo-api-client","scripts":{"build":"tsc --noEmit","test":"vitest run"},"type":"module","version":"1.0.0"}
