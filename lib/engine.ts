@@ -35,9 +35,30 @@ async function readdirRecursive(dir: string): Promise<string[]> {
   return out.sort();
 }
 
+/** Resolve a fixture directory across dev and serverless layouts. */
+async function fixtureDir(name: FixtureName): Promise<string> {
+  const candidates = [
+    // Serverless (Vercel): traced files keep the project layout at the task root.
+    path.join(process.cwd(), "fixtures", name),
+    // Local dev / standalone node: relative to this module in the source tree.
+    fileURLToPath(new URL(`../fixtures/${name}/`, import.meta.url)),
+    // Bundled fallback: relative to the .next server output.
+    path.join(process.cwd(), ".next", "server", "fixtures", name),
+  ];
+  for (const dir of candidates) {
+    try {
+      const st = await fs.stat(dir);
+      if (st.isDirectory()) return dir;
+    } catch {
+      // try the next candidate
+    }
+  }
+  throw new Error(`fixture directory not found for "${name}"`);
+}
+
 /** Zip a handcrafted fixture directory in-memory (no network). */
 async function zipFixture(name: FixtureName): Promise<Buffer> {
-  const dir = fileURLToPath(new URL(`../fixtures/${name}/`, import.meta.url));
+  const dir = await fixtureDir(name);
   const zip = new JSZip();
   for (const rel of await readdirRecursive(dir)) {
     const content = await fs.readFile(path.join(dir, rel));
