@@ -1,11 +1,10 @@
 # Proofline — AngelHack Submission Package (paste-ready)
 
 Event: AngelHack "Building with IBM Bob" — deadline **Oct 18, 2026, 23:59 ET**.
-Track: **Theme 1 — Explore, Fix, Build an unfamiliar app**.
+Track: **Theme 2 — Experienced Developers: "Modernize What Matters"** (decided Oct 14).
 
 ## 1. GitHub repo link
-https://github.com/solanaminter/proofline — PENDING PUBLISH (local repo ready;
-needs a fresh GitHub token from Dy, used transiently, never stored).
+https://github.com/solanaminter/proofline — ✅ PUBLISHED Oct 18 (snapshot commit 364216c, verified).
 
 ## 2. Project details
 
@@ -42,11 +41,12 @@ under bob-sessions/. Nothing in the deck is simulated — the pending status is 
 
 ## 5. Demo video (≤3 min, YouTube)
 video/proofline-demo.mp4 — DONE locally, 1:45, narrated (Kokoro, free).
-Upload pending repo publish (end card carries the repo URL).
+Upload to YouTube pending Dy's file-pick click (browser signed in; the file
+picker isn't automatable). End card intentionally carries no repo URL.
 
 ## 6. Live demo URL
-PENDING DEPLOY — vercel.json committed; deploy needs Vercel auth
-(Dy's `vercel login` or dashboard repo-connect; sandbox CLI is logged out).
+https://proofline-flax-mu.vercel.app/ — ✅ DEPLOYED Oct 18, verified public
+(HTTP 200, app renders, no login wall / no Deployment Protection).
 
 ## Filing order once gates clear
 1. Push repo (token) → 2. Deploy to Vercel, verify public (no SSO wall) →
